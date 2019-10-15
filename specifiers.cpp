@@ -209,22 +209,6 @@ bool
 			}
 			else if (i < length)
 			{
-				if (*string == '\\')
-				{
-					if (IsEnd(*(string + 1)))
-					{
-						++string;
-						break;
-					}
-					// You can only escape the escape character or spaces.
-					// Spaces aren't technically used here, but they COULD be
-					// used in the current string in other circumstances, so
-					// they may be present even when not needed.
-					if (*(string + 1) == '\\' || IsSpacer(*(string + 1)))
-					{
-						++string;
-					}
-				}
 				if (outp != string)
 				{
 					// Compress the string only if we have a discrepancy
@@ -247,18 +231,6 @@ bool
 			}
 			else if (i < length)
 			{
-				if (*string == '\\')
-				{
-					if (IsEnd(*(string + 1)))
-					{
-						++string;
-						break;
-					}
-					if (*(string + 1) == '\\' || IsWhitespace(*(string + 1)))
-					{
-						++string;
-					}
-				}
 				if (outp != string)
 				{
 					*outp = *string;
@@ -282,21 +254,6 @@ bool
 			}
 			else if (i < length)
 			{
-				if (*string == '\\')
-				{
-					if (IsEnd(*(string + 1)))
-					{
-						++string;
-						break;
-					}
-					// Escape spaces, backspace and delimiters - this code is
-					// context independent so you can use a string with or
-					// without a delimiter and can still escape spaces.
-					if (*(string + 1) == '\\' || IsSpacer(*(string + 1)))
-					{
-						++string;
-					}
-				}
 				if (outp != string)
 				{
 					*outp = *string;
